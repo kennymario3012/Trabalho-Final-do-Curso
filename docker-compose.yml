@@ -92,26 +92,7 @@ services:
     depends_on:
       - cs
       - ca
-
-  local-proxy:
-    image: 'jc21/nginx-proxy-manager:latest'
-    platform: linux/amd64
-    container_name: local-proxy
-    restart: unless-stopped
-    ports:
-      - '80:80'     # Public HTTP Port
-      - '443:443'   # Public HTTPS Port
-      - '81:81'     # Admin Web Port
-    volumes:
-      - npm-data:/data
-      - npm-letsencrypt:/etc/letsencrypt
-    networks:
-      - xroad-network
-    depends_on:
-      - ss1
-      - ss-minfin
-      - ss-minjusdh
-
+      
 volumes:
   cs-db-volume:
     name: cs-db-data
